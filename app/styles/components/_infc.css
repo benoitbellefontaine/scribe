@@ -1,0 +1,23 @@
+.infcnode circle {
+    fill: #999;
+  }
+  
+  .infcnode text {
+    font: 10px sans-serif;
+  }
+  
+  .infcnode--internal circle {
+    fill: #555;
+  }
+  
+  .infcnode--internal text {
+    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  }
+  
+  .infclink {
+    fill: none;
+    stroke: #555;
+    stroke-opacity: 0.4;
+    stroke-width: 1.5px;
+  }
+  
