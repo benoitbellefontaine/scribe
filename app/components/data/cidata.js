@@ -1,0 +1,22 @@
+export default [
+    "NOVELL",
+    "VISIO",
+    "BITLOCKER",
+    "SIGMA",
+    "IMANAGER",
+    "IPRINT",
+    "CISCO ANYTIME",
+    "NETWORK",
+    "EXCHANGE",
+    "OUTLOOK",
+    "GCDOCS",
+    "ADOBE",
+    "PKI",
+    "GCHRIS",
+    "WORD",
+    "EXCEL",
+    "MONITOR/PC",
+    "DSKNTB??",
+    "MSPROJECT",
+    "AD"
+]
