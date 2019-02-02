@@ -21,36 +21,37 @@ mongoose
     console.log('Error while DB connecting');
     console.log(e);
   });
+  
 
-  new WebpackDevServer(webpack(config), {
-    publicPath: 'http://10.17.1.26:3001', //config.output.publicPath,
-    hot: true,
-    inline: false,
-    historyApiFallback: true,
-    quiet: true,
-    port: 3001,
-    setup: function(app) {
-  
-      // Body Parser
-      const urlencodedParser = bodyParser.urlencoded({ extended: true });
-      app.use(urlencodedParser);
-      app.use(bodyParser.json());
-  
-      // Hello
-      /*app.post('/user/hello', (req, res) => {
-          console.log('server.hello');
-          res.json('Hello World');
-      });*/
-  
-      // Router
-      const router = express.Router();
-      app.use('/user', router);
-      require('./controllers/userController')(router);
-  
-    }
-  }).listen(3001, '10.17.1.26', function (error, result) {
-    if (error) {
-      console.log(error)
-    }
-    console.log('Listening at http://10.17.1.26:3001!')
-  })
+new WebpackDevServer(webpack(config), {
+  publicPath: 'http://10.17.5.23:3001', //config.output.publicPath,
+  hot: true,
+  inline: false,
+  historyApiFallback: true,
+  quiet: true,
+  port: 3000,
+  setup: function(app) {
+
+    // Body Parser
+    const urlencodedParser = bodyParser.urlencoded({ extended: true });
+    app.use(urlencodedParser);
+    app.use(bodyParser.json());
+
+    // Hello
+    /*app.post('/user/hello', (req, res) => {
+        console.log('server.hello');
+        res.json('Hello World');
+    });*/
+
+    // Router
+    const router = express.Router();
+    app.use('/user', router);
+    require('./controllers/userController')(router);
+
+  }
+}).listen(3001, '10.17.5.23', function (error, result) {
+  if (error) {
+    console.log(error)
+  }
+  console.log('Listening at http://10.17.5.23:3001!')
+})
