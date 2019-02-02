@@ -15,6 +15,7 @@ import {
   LOGIN_REQUEST,
   REGISTER_REQUEST,
   SET_AUTH,
+  SET_AGENT,
   SET_USER,
   LOGOUT,
   CHANGE_FORM,
@@ -104,7 +105,7 @@ export function * loginFlow () {
     if (winner.auth) {
       // ...we send Redux appropiate actions
       yield put({type: SET_AUTH, newAuthState: true}) // User is logged in (authorized)
-      yield put({type: SET_USER, user: username})
+      yield put({type: SET_AGENT, agent: username})
       //yield put({type: CHANGE_FORM, newFormState: {username: '', password: ''}}) // Clear form
       forwardTo('/dashboard') // Go to dashboard page
     }

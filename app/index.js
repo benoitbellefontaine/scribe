@@ -13,17 +13,27 @@ import {clearError} from './actions'
 
 import './styles/main.css'
 
-import App from         './components/App'
-import Home from        './components/Home'
-import Login from       './components/Login'
-import Register from    './components/Register'
-import Dashboard from   './components/Dashboard'
-import Followup from    './components/Followup'
-import CSPS from        './components/CSPS'
-import INFC from        './components/INFC'
-import PSPC from        './components/PSPC'
-import SSC from        './components/SSC'
-import NotFound from    './components/NotFound'
+import App              from  './components/App'
+import Home             from  './components/Home'
+import Login            from  './components/Login'
+import Register         from  './components/Register'
+import Dashboard        from  './components/Dashboard'
+import EmailTemplates   from  './components/EmailTemplates'
+import WhatIsScribe     from  './components/WhatIsScribe'
+import Click            from  './components/Click'
+import Tree2            from  './components/Tree2'
+import ReactSpringTree  from  './components/RSTree/RSTree'
+import Storage          from  './components/Storage'
+import ItemStorage      from  './components/ItemStorage'
+import CSPS             from  './components/CSPS'
+import INFC             from  './components/INFC'
+import PSPC             from  './components/PSPC'
+import SSC              from  './components/SSC'
+import NotFound         from  './components/NotFound'
+
+// email templates
+import Followup         from  './components/templates/Followup'
+import SwapDevice       from  './components/templates/SwapDevice'
 
 const logger = createLogger({
   // Ignore `CHANGE_FORM` actions in the logger, since they fire after every keystroke
@@ -104,6 +114,14 @@ class LoginFlow extends Component {
               <Route path='/register' component={Register} />
               <Route path='/dashboard' component={Dashboard} />
               <Route path='/followup' component={Followup} />
+              <Route path='/swapdevice' component={SwapDevice} />
+              <Route path='/emailtemplates' component={EmailTemplates} />
+              <Route path='/whatisscribe' component={WhatIsScribe} />
+              <Route path='/click' component={Click} />
+              <Route path='/tree2' component={Tree2} />
+              <Route path='/reactspringtree' component={ReactSpringTree} />
+              <Route path='/storage' component={Storage} />
+              <Route path='/itemstorage' component={ItemStorage} />
               <Route path='/csps' component={CSPS} />
               <Route path='/infc' component={INFC} />
               <Route path='/pspc' component={PSPC} />

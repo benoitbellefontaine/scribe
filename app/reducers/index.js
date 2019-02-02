@@ -7,6 +7,7 @@ import {
   SET_AUTH,
   SET_USER,
   GET_USER,
+  SET_AGENT,
   SENDING_REQUEST,
   REQUEST_ERROR,
   CLEAR_ERROR
@@ -22,6 +23,7 @@ let initialState = {
   error: '',
   currentlySending: false,
   loggedIn: auth.loggedIn(),
+  agent: '',
   user: '',
   client : {
     name : "",
@@ -47,6 +49,9 @@ function reducer (state = initialState, action) {
       return {...state, loggedIn: action.newAuthState}
     case SET_USER:
       return {...state, user: action.user}
+    case SET_AGENT:
+      //console.log('action.agent',action.agent)
+      return {...state, agent: action.agent}
     case GET_USER:
       return {...state}
     case SENDING_REQUEST:

@@ -29,6 +29,7 @@ body {
 	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   padding-top: $nav-height;
   background-color: $background-color;
+  background-color: rgba(0, 0, 0, 0.10);
 }
 
 body.js-open-sans-loaded {

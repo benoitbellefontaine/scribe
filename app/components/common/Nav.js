@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import LoadingButton from './LoadingButton'
 import {Link} from 'react-router'
 
@@ -23,7 +24,6 @@ class Nav extends Component {
       </div>
     ) : (
       <div>
-        <Link to='/register' className='btn btn--login btn--nav' onClick={this._clearError}>Register</Link>
         <Link to='/login' className='btn btn--login btn--nav' onClick={this._clearError}>Login</Link>
       </div>
     )
@@ -50,9 +50,13 @@ class Nav extends Component {
 }
 
 Nav.propTypes = {
-  loggedIn: React.PropTypes.bool,
-  currentlySending: React.PropTypes.bool,
-  dispatch: React.PropTypes.func
+  loggedIn:  PropTypes.bool,
+  currentlySending:  PropTypes.bool,
+  dispatch:  PropTypes.func
 }
 
 export default Nav
+
+/*
+<Link to='/register' className='btn btn--login btn--nav' onClick={this._clearError}>Register</Link>
+*/

@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import LoadingButton from './common/LoadingButton'
+import LoadingButton from '../common/LoadingButton'
 //import styled from 'styled-components';
 //import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
 
-import {changeForm} from '../actions'
-import {fetchRequest} from '../actions'
+import {changeForm} from '../../actions'
+import {fetchRequest} from '../../actions'
 //import { redBright } from 'ansi-colors';
 
 /*
@@ -144,8 +144,8 @@ class Followup extends React.Component {
     
         let bonjour = (language === 'French') ? "Bonjour "+fname+ ",%0D%0A%0D%0A" : "Hello "+fname+",%0D%0A%0D%0A";
         let signature = (language === 'French')
-            ? "Merci,%0D%0A" + this.state.agent + "%0D%0AShared Services Canada | Service Partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca"
-            : "Thank you,%0D%0A" + this.state.agent + "%0D%0AShared Services Canada | Service partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca";
+            ? "Merci,%0D%0A" + this.props.data.agent + "%0D%0AShared Services Canada | Service Partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca"
+            : "Thank you,%0D%0A" + this.props.data.agent + "%0D%0AShared Services Canada | Service partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca";
         (language === 'French') ? console.log('french',ftext) : console.log('english',etext);
         const {email} = this.state;
         location.href= (language === 'French') 
@@ -176,7 +176,7 @@ class Followup extends React.Component {
 
                 <section style={{backgroundColor:'white',boxShadow: '2px 2px 5px rgb(220,220,220)',padding:10}} className='text-section'>
 
-                    <div style={{color:'black',marginBottom:'0px',paddingBottom:5,textAlign:'center',fontSize:'150%',borderBottom:'1px solid lightgray'}}>Ticket Follow Up</div>
+                    <div style={{color:'black',marginBottom:'0px',paddingBottom:5,textAlign:'center',fontSize:'150%',borderBottom:'1px solid lightgray'}}>Ticket Follow Up Template</div>
 
                     {/* INJECT */}
                     <div style={{padding:5,marginBottom:'5px',border:'0px solid #93bfe0',backgroundColor:'white',display:'flex',borderBottom:'1px solid lightgray',paddingBottom:5}}>
@@ -285,7 +285,7 @@ class Followup extends React.Component {
                                     <div className="radio">
                                     <label style={{display:'flex',justifyContent:'space-between',margin:2}}>
                                         Super Agent{" "}
-                                        <input style={{borderRadius:'5px',padding:'2px',border:'1px solid lightgray'}} type="text" value={this.state.agent} 
+                                        <input style={{borderRadius:'5px',padding:'2px',border:'1px solid lightgray'}} type="text" value={this.props.data.agent} 
                                             onChange={this.handleAgentChange} />
                                     </label>
                                 </div>
@@ -324,7 +324,7 @@ class Followup extends React.Component {
                                 : <div style={{marginTop:10}}>{french_text}</div>
                         }
                         <div style={{marginTop:10}}>
-                            {this.state.agent}<br/>
+                            {this.props.data.agent}<br/>
                             Shared Services Canada | Service partagés Canada<br/>
                             Government of Canada | Gouvernement du Canada<br/>
                             ssc.sdincidents-incidentscs.spc@canada.ca

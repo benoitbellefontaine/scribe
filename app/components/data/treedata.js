@@ -42,14 +42,14 @@ export default {
                     "subject": " - mobile device replacement",
                     "etext": "Please access http://service.ssc.gc.ca/en/services/communicating/mobile-dev-phones/mobile-users, scroll down to the Ordering section and select Mobile Phones Order Form. \
                         %0D%0A%0D%0A The following fields and sections are MANDATORY: \
-                        %0D%0A + First three fields : Date, Department and SD Ticket # \
+                        %0D%0A + First three fields : Date, Department and SD Ticket %23 \
                         %0D%0A + Section A : All fields \
                         %0D%0A + Section B : Must contain all the essential shipping information \
                         %0D%0A + Section C : All fields + Accept checkbox \
                         %0D%0A + Section E : Mandatory \
-                        %0D%0A + Section F : All fields + Accept checkbox. Must be approved at DG level \
+                        %0D%0A + Section F : All fields + Accept checkbox . Must be approved at DG level \
                         %0D%0A%0D%0A Incomplete, incorrectly filled or scanned forms will be rejected. \
-                        %0D%0A%0D%0A Get the Device IMEI # by entering *#06# on your phone's call screen.%0D%0A%0D%0A",
+                        %0D%0A%0D%0A Get the Device IMEI %23 by entering *%2306%23 on your phone's call screen.%0D%0A%0D%0A",
                     "ftext": "SVP accéder à http://service.ssc.gc.ca/fr/services/communication/appareils-mobiles-lignefixe/mobiles-utils, aller à la section Commande et choisir Formulaire de commande d’appareils mobiles. \
                         %0D%0A%0D%0ALes sections et champs à remplir sont au bas du document. SVP remplir :\
                         %0D%0A%0D%0A + Les trois premiers champs : date, ministère et no de billet \
@@ -59,7 +59,7 @@ export default {
                         %0D%0A + Section E : tous les champs \
                         %0D%0A + Section F : tous les champs + cocher la boîte Accepter \
                         %0D%0A%0D%0ALes formulaires incomplets seront rejetés. Pour envoyer, simplement répondre à ce courriel, joindre le formulaire et envoyer. \
-                        %0D%0A%0D%0ARécupérer le Device IMEI # en entrant *#06# sur l'écran de l'appareil.%0D%0A%0D%0A",
+                        %0D%0A%0D%0ARécupérer le Device IMEI %23 en entrant *%2306%23 sur l'écran de l'appareil.%0D%0A%0D%0A",
                 },
             ] 
         },
@@ -148,7 +148,6 @@ export default {
             ]
         },
         { "name": "support issue",
-            "type": "reason",
             "children": [
                 { "name": "login issue",
                     "children": [
@@ -419,6 +418,39 @@ export default {
                 },
                 { "name": "mobile device issue",
                     "children": [
+                        { "name":"link to confluence (cisco anyconnect)", "icon": link, "color": orange8,
+                            "linkto":"https://confluence.ssc-spc.gc.ca/display/SEWS/Cellular+Devices"
+                        },
+                        { "name": "cellular device issue",
+                          "children": [
+                            { "name": "mobile network activation issue",
+                                children: [
+                                    { "name": "SIM card not activated" },
+                                    { "name": "referred user to Bell Activation Hotline at 1-866-238-0988" },
+                                    { "name": "etc..." },
+                                ]
+                            },
+                            { "name": "Break/Replace Smartphone Device Process",
+                                "link": "https://confluence.ssc-spc.gc.ca/pages/viewpage.action?pageId=83401500",
+                                children: [
+                                    { "name": "user factory reset phone" },
+                                    { "name": "user still having a problem with the phone",
+                                        children: [
+                                            { "name": "referred user to Bell Activation Hotline at 1-866-238-0988" },
+                                        ]                                            
+                                    },
+                                    { "name": "sent form + instructions + ticket to client" },
+                                    { "name": "closing issue" },
+                                ]
+                            },
+                          ]
+                        },
+                        { "name": "android knox issue" },
+                        { "name": "blackberry issue" },
+                    ] 
+                },
+                { "name": "phone issue",
+                    "children": [
                         { "name": "cellular", 
                             "children": [
                                 { "name": "cellular",
@@ -447,6 +479,11 @@ export default {
                         { "name": "java issue 2" },
                     ] 
                 },
+                { "name": "wifi issue",
+                    "children": [
+                        { "name": "for improper NATDSUPP escalation see IM263922"}
+                    ]
+                }
             ]
         },
         { "name": "choppah issue",
@@ -454,6 +491,25 @@ export default {
             "children": [
                 { "name": "Get down!" },
                 { "name": "Get to the choppah!" }
+            ]
+        },
+        { "name" : "outage", 
+            "children" : [
+                { "name":"link to confluence (cisco anyconnect)", "icon": link, "color": orange8,
+                    "linkto":"https://confluence.ssc-spc.gc.ca/display/SEWS/Cisco+AnyConnect"
+                },
+            ]
+        },
+        { "name": "INFC issue",
+            "type": "reason",
+            "children": [
+                { "name": "JIRA issue",
+                    "children": [
+                        { "name" : "short description: INFC-<REGION>-SERVER-<OS>" },
+                        { "name" : "group: ETSMRSUP" },
+                        { "name" : "application: SSCJIRA" }
+                    ]
+                }
             ]
         },
     ]

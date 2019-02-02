@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import LoadingButton from './common/LoadingButton'
+import LoadingButton from '../common/LoadingButton'
 //import styled from 'styled-components';
 //import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
 
-import {changeForm} from '../actions'
-import {fetchRequest} from '../actions'
+import {changeForm} from '../../actions'
+import {fetchRequest} from '../../actions'
 //import { redBright } from 'ansi-colors';
 
 /*
@@ -31,7 +31,7 @@ const ChipButton = styled.div`
 `;
 */
 
-class Followup extends React.Component {
+class SwapDevice extends React.Component {
 
     constructor (props) {
       super(props)
@@ -144,8 +144,8 @@ class Followup extends React.Component {
     
         let bonjour = (language === 'French') ? "Bonjour "+fname+ ",%0D%0A%0D%0A" : "Hello "+fname+",%0D%0A%0D%0A";
         let signature = (language === 'French')
-            ? "Merci,%0D%0A" + this.state.agent + "%0D%0AShared Services Canada | Service Partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca"
-            : "Thank you,%0D%0A" + this.state.agent + "%0D%0AShared Services Canada | Service partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca";
+            ? "Merci,%0D%0A" + this.props.data.agent + "%0D%0AShared Services Canada | Service Partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca"
+            : "Thank you,%0D%0A" + this.props.data.agent + "%0D%0AShared Services Canada | Service partagés Canada%0D%0AGovernment of Canada | Gouvernement du Canada%0D%0Assc.sdincidents-incidentscs.spc@canada.ca";
         (language === 'French') ? console.log('french',ftext) : console.log('english',etext);
         const {email} = this.state;
         location.href= (language === 'French') 
@@ -168,15 +168,21 @@ class Followup extends React.Component {
 
         const {selectedLanguage, ticket, name, agent} = this.state;
         const fname = name.split(" ")[0];
-        const french_text = "NB: Ne pas répondre à cette boîte courriel. %0D%0A%0D%0ANous vous écrivons aujourd'hui au sujet du billet " + this.state.ticket + ". Nous vous demandons de nous rappeler dans les 5 prochains jours ouvrables au " + this.state.telephone + " pour obtenir de l'aide.%0D%0A%0D%0ASi nous ne recevons aucune réponse de votre part dans les 5 jours ouvrables, nous considérerons que le problème est résolu.%0D%0A%0D%0APour plus d'assistance, nous vous demandons de nous appeler." 
-        const english_text = "Note – Do not reply by email as this mailbox is not monitored. %0D%0A%0D%0AWe are writing to you today with regards to ticket " + this.state.ticket + ". We request that you call us back within 5 business days at  " + this.state.telephone + " for further support.%0D%0A%0D%0AIf we don’t hear back from you within the 5 business days, we will consider the issue to be resolved.%0D%0A%0D%0AFor further assistance, we request you call us."
+        const english_text = "RE: Ready for Device Swap%0D%0A%0D%0A" +
+            "The Service Center has notified us that your laptop is ready for pick-up and that you have 10 " +  
+            "business days to proceed with the swap. Prior to bringing back your old laptop, ensure " +
+            "that you have copied all your personal files to your shared drive (U:)."
+        const french_text = "RE: Prêt pour l'échange%0D%0A%0D%0A" +
+            "Le centre de service nous a informés que votre nouvel ordinateur portable est prêt et que vous disposez de 10 "+
+            "jours ouvrables pour procéder à l'échange. Avant de ramener votre ancien ordinateur portable, assurez-vous " +
+            "que vous avez copié tous vos fichiers personnels sur votre lecteur partagé (U:)"
 
         return (
             <article style={{height:'inherit',width:'75vw',margin:'0px auto',display:'flex',justifyContent:'center',alignItems:'center',fontFamily: 'Quattrocento Sans'}}>
 
                 <section style={{backgroundColor:'white',boxShadow: '2px 2px 5px rgb(220,220,220)',padding:10}} className='text-section'>
 
-                    <div style={{color:'black',marginBottom:'0px',paddingBottom:5,textAlign:'center',fontSize:'150%',borderBottom:'1px solid lightgray'}}>Ticket Follow Up</div>
+                    <div style={{color:'black',marginBottom:'0px',paddingBottom:5,textAlign:'center',fontSize:'150%',borderBottom:'1px solid lightgray'}}>Device Swap Template</div>
 
                     {/* INJECT */}
                     <div style={{padding:5,marginBottom:'5px',border:'0px solid #93bfe0',backgroundColor:'white',display:'flex',borderBottom:'1px solid lightgray',paddingBottom:5}}>
@@ -285,7 +291,7 @@ class Followup extends React.Component {
                                     <div className="radio">
                                     <label style={{display:'flex',justifyContent:'space-between',margin:2}}>
                                         Super Agent{" "}
-                                        <input style={{borderRadius:'5px',padding:'2px',border:'1px solid lightgray'}} type="text" value={this.state.agent} 
+                                        <input style={{borderRadius:'5px',padding:'2px',border:'1px solid lightgray'}} type="text" value={this.props.data.agent} 
                                             onChange={this.handleAgentChange} />
                                     </label>
                                 </div>
@@ -324,7 +330,7 @@ class Followup extends React.Component {
                                 : <div style={{marginTop:10}}>{french_text}</div>
                         }
                         <div style={{marginTop:10}}>
-                            {this.state.agent}<br/>
+                            {this.props.data.agent}<br/>
                             Shared Services Canada | Service partagés Canada<br/>
                             Government of Canada | Gouvernement du Canada<br/>
                             ssc.sdincidents-incidentscs.spc@canada.ca
@@ -344,4 +350,4 @@ function select (state) {
     return { data: state }
 }
 
-export default connect(select)(Followup)
+export default connect(select)(SwapDevice)
