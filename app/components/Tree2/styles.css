@@ -1,0 +1,26 @@
+
+
+  .sidebar {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 400px;
+    background: rgba(255,255,255,0.9);
+    padding: 40px;
+    padding-top: 60px;
+    font-size: 15px;
+    z-index: 10;
+  }
+  
+  .toggle {
+    position: absolute;
+    margin: 40px;
+    color: #dfdfdf;
+    z-index: 101;
+    font-size: 2em;
+    cursor: pointer;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }

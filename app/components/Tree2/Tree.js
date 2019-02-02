@@ -13,8 +13,8 @@ const styles = {
     verticalAlign: 'middle',
   },
   toggle: {
-    width: '1em',
-    height: '1em',
+    width: '1.3em',
+    height: '1.3em',
     marginRight: 10,
     cursor: 'pointer',
     verticalAlign: 'middle',
@@ -30,6 +30,11 @@ const styles = {
     marginLeft: 6,
     padding: '4px 0px 0px 14px',
     borderLeft: '1px dashed rgba(255,255,255,0.4)',
+  },
+  email: {
+    margin: '5px',
+    padding: '2px 2px 2px 2px',
+    padding: '0px',
   },
 }
 
@@ -49,13 +54,15 @@ export default class Tree extends React.Component {
     this.add = this.add.bind(this);
     this.toggle = this.toggle.bind(this);
     this.toggleVisibility = this.toggleVisibility.bind(this);
+    this.sendEmail = this.sendEmail.bind(this);
+    this.accessLink = this.accessLink.bind(this);
+    this.canInfo = this.canInfo.bind(this);
+    this.canInfo2 = this.canInfo2.bind(this);
   }
 
   add() {
     console.log("add");
-    //() => this.state.onClick &&
     this.props.onMouseDown(this.props.content)
-    //this.props.onClick(this.props.content)
   }
 
   toggle() {
@@ -65,9 +72,44 @@ export default class Tree extends React.Component {
 
   toggleVisibility() {
     this.setState(
+      state => ({ visible: !state.visible, immediate: true })
+    )
+  }
+
+  sendEmail() {
+    console.log('sendEmail()')
+    location.href="mailto:"+this.props.to+"?subject="+this.props.subject+"&body="+"Hello,%0D%0A%0D%0A"+this.props.text+'%0D%0A%0D%0A'+this.props.agent+"%0D%0ASD SSC";
+    /*this.setState(
       state => ({ visible: !state.visible, immediate: true }),
       //() => this.state.onClick && this.state.onClick(this.state.visible)
-    )
+    )*/
+  }
+
+  accessLink() {
+    console.log('accessLink()')
+    window.open( this.props.url, '_blank' );
+    /*this.setState(
+      state => ({ visible: !state.visible, immediate: true }),
+      //() => this.state.onClick && this.state.onClick(this.state.visible)
+    )*/
+  }
+
+  canInfo() {
+    console.log('canInfo()')
+    this.props.onMouseDown('info',this.props.title,this.props.text)
+    /*this.setState(
+      state => ({ visible: !state.visible, immediate: true }),
+      //() => this.state.onClick && this.state.onClick(this.state.visible)
+    )*/
+  }
+
+  canInfo2() {
+    console.log('canInfo2()')
+    this.props.onMouseDown()
+    /*this.setState(
+      state => ({ visible: !state.visible, immediate: true }),
+      //() => this.state.onClick && this.state.onClick(this.state.visible)
+    )*/
   }
 
   componentWillReceiveProps(props) {
@@ -82,16 +124,14 @@ export default class Tree extends React.Component {
 
   render() {
     const { open, visible, immediate } = this.state
-    const { children, content, type, style, canHide, springConfig } = this.props
-    const Icon =
-      Icons[`${children ? (open ? 'Minus' : 'Plus') : 'Close'}SquareO`]
-
+    const { children, content, type, style, canHide, canEmail, canLink, canInfo, canInfo2, springConfig, title } = this.props
+    const Icon = Icons[`${children ? (open ? 'Minus' : 'Plus') : 'Leaf'}SquareO`]
     return (
       <div style={{ ...styles.tree, ...style }} className="treeview" >
         <Icon
           className="toggle"
           onMouseDown={this.toggle}
-          style={{ ...styles.toggle, opacity: children ? 1 : 0.3 }}
+          style={{ ...styles.toggle, opacity: children ? 1 : 1 }}
         />
         <span style={{ ...styles.type, marginRight: type ? 10 : 0 }}>
           {type}
@@ -103,10 +143,38 @@ export default class Tree extends React.Component {
             onClick={this.toggleVisibility}
           />
         )}
-        <span style={{ verticalAlign: 'middle' }} onClick={this.add}>
+
+        <span style={{verticalAlign:'middle',fontSize:'1em'}} >
           {content}
-          <button onClick={() => this.add}>insert</button>
+          <span style={{height:'15px',fontSize:'1em',lineHeight:'0.75em',border:'2px solid darkgray',borderRadius:'3px',margin:'2px',marginLeft:'5px',padding:1,cursor:'pointer',color:'red',backgroundColor:'white'}} onClick={this.add}><strong>rec</strong></span>
         </span>
+        
+        <span style={{verticalAlign:'middle',fontSize:'1em'}} >
+        {canEmail && (
+          <span style={{height:'15px',fontSize:'1em',lineHeight:'0.75em',border:'0px solid darkgray',borderRadius:'3px',margin:'2px',marginLeft:'5px',padding:3,cursor:'pointer',backgroundColor:'darkgray',color:'white',backgroundImage:'linear-gradient(#5770ff,#70abff)'}} onClick={this.sendEmail}><strong>email</strong></span>
+        )}
+        </span>
+
+        <span style={{verticalAlign:'middle',fontSize:'1em'}} >
+        {canLink && (
+          <span style={{height:'15px',lineHeight:'0.75em',border:'0px solid darkgray',borderRadius:'3px',margin:'2px',marginLeft:'5px',padding:3,cursor:'pointer',color:'white',backgroundImage:'linear-gradient(#70abff,#5770ff)'}} onClick={this.accessLink}><strong>link</strong></span>
+        )}
+        </span>
+
+        <span style={{verticalAlign:'middle',fontSize:'1em'}} >
+        {canInfo && (
+          <span style={{height:'15px',lineHeight:'0.75em',border:'0px solid darkgray',borderRadius:'3px',margin:'2px',marginLeft:'5px',padding:3,cursor:'pointer',color:'white',backgroundImage:'linear-gradient(#70abff,#5770ff)'}} onClick={this.canInfo}>
+          <strong>info</strong>-{title}</span>
+        )}
+        </span>
+
+        <span style={{verticalAlign:'middle',fontSize:'1em'}} >
+        {canInfo2 && (
+          <span style={{height:'15px',lineHeight:'0.75em',border:'0px solid darkgray',borderRadius:'3px',margin:'2px',marginLeft:'5px',padding:3,cursor:'pointer',color:'white',backgroundImage:'linear-gradient(#70abff,#5770ff)'}} onClick={this.canInfo2}>
+          <strong>info</strong></span>
+        )}
+        </span>
+
         <Spring
           native
           immediate={immediate}
@@ -133,6 +201,7 @@ Tree.propTypes = {
   open: PropTypes.bool,
   visible: PropTypes.bool,
   canHide: PropTypes.bool,
+  canEmail: PropTypes.bool,
   content: PropTypes.node,
   springConfig: PropTypes.func,
   onMouseDown: PropTypes.func,

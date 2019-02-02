@@ -25,10 +25,6 @@ import Tree2            from  './components/Tree2'
 import ReactSpringTree  from  './components/RSTree/RSTree'
 import Storage          from  './components/Storage'
 import ItemStorage      from  './components/ItemStorage'
-import CSPS             from  './components/CSPS'
-import INFC             from  './components/INFC'
-import PSPC             from  './components/PSPC'
-import SSC              from  './components/SSC'
 import NotFound         from  './components/NotFound'
 
 // email templates
@@ -122,10 +118,6 @@ class LoginFlow extends Component {
               <Route path='/reactspringtree' component={ReactSpringTree} />
               <Route path='/storage' component={Storage} />
               <Route path='/itemstorage' component={ItemStorage} />
-              <Route path='/csps' component={CSPS} />
-              <Route path='/infc' component={INFC} />
-              <Route path='/pspc' component={PSPC} />
-              <Route path='/ssc' component={SSC} />
             </Route>
             <Route path='*' component={NotFound} />
           </Route>

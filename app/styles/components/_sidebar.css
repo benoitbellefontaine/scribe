@@ -1,0 +1,88 @@
+.sidebar {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 400px;
+    background: #dde6e6;
+    padding: 20px;
+    padding-top: 20px;
+    font-size: 15px;
+    z-index: 100;
+  }
+  
+  .sidebar-toggle {
+    position: absolute;
+    margin: 0px;
+    color: #a0a0a0;
+    color: #000000;
+    z-index: 100;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .login-form-forgot {
+    float: right;
+  }
+  
+  .login-form-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .ant-avatar {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 50%;
+    font-size: 3em !important;
+  }
+  
+  .middle .ant-form-item-control {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ant-truck {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 50%;
+    font-size: 3em !important;
+    background-color: #A7C8C8;
+    text-align:center;
+  }
+  
+  .menu {
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    z-index: 110;
+  }
+  
+  .menu:hover {
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+  }
+  
+  .text-service {
+    text-align: justify;
+    padding: 10px;
+    margin: 20px;
+    /*font-family: 'Lato', 'Kanit';*/
+    font-size: 16px;
+    color: black;
+    border: 0px solid lightgray;
+    background-color: rgba(255,255,255,0.4);
+  }
+  
+  .box-service {
+    width:33%;
+    height:100%;
+    padding-top: 100px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction:column;
+    color: white;
+  }
