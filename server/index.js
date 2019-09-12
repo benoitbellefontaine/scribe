@@ -24,12 +24,12 @@ mongoose
   
 
 new WebpackDevServer(webpack(config), {
-  publicPath: 'http://10.17.5.23:3001', //config.output.publicPath,
+  publicPath: 'http://10.36.101.133:3001', //config.output.publicPath,
   hot: true,
   inline: false,
   historyApiFallback: true,
   quiet: true,
-  port: 3000,
+  port: 3001,
   setup: function(app) {
 
     // Body Parser
@@ -49,9 +49,9 @@ new WebpackDevServer(webpack(config), {
     require('./controllers/userController')(router);
 
   }
-}).listen(3001, '10.17.5.23', function (error, result) {
+}).listen(3001, '10.36.101.133', function (error, result) {
   if (error) {
     console.log(error)
   }
-  console.log('Listening at http://10.17.5.23:3001!')
+  console.log('Listening at http://10.36.101.133:3001!')
 })
