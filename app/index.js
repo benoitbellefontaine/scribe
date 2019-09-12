@@ -11,6 +11,11 @@ import reducer from './reducers'
 import rootSaga from './sagas'
 import {clearError} from './actions'
 
+//var fs = require('file-system');
+//import fs from 'file-system'
+//var file = require('file-system');
+//var fs = require('fs');
+
 import './styles/main.css'
 
 import App              from  './components/App'
@@ -26,6 +31,7 @@ import ReactSpringTree  from  './components/RSTree/RSTree'
 import Storage          from  './components/Storage'
 import ItemStorage      from  './components/ItemStorage'
 import NotFound         from  './components/NotFound'
+import Excel            from  './components/excel'
 
 // email templates
 import Followup         from  './components/templates/Followup'
@@ -114,6 +120,7 @@ class LoginFlow extends Component {
               <Route path='/emailtemplates' component={EmailTemplates} />
               <Route path='/whatisscribe' component={WhatIsScribe} />
               <Route path='/click' component={Click} />
+              <Route path='/excel' component={Excel} />
               <Route path='/tree2' component={Tree2} />
               <Route path='/reactspringtree' component={ReactSpringTree} />
               <Route path='/storage' component={Storage} />

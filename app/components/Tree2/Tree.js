@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Spring, config, animated } from 'react-spring'
 import * as Icons from './icons'
 
+import './styles.css';
+
 const styles = {
   tree: {
     position: 'relative',
@@ -29,6 +31,7 @@ const styles = {
     willChange: 'transform, opacity, height',
     marginLeft: 6,
     padding: '4px 0px 0px 14px',
+    fontSize: '1em',
     borderLeft: '1px dashed rgba(255,255,255,0.4)',
   },
   email: {
@@ -78,7 +81,15 @@ export default class Tree extends React.Component {
 
   sendEmail() {
     console.log('sendEmail()')
-    location.href="mailto:"+this.props.to+"?subject="+this.props.subject+"&body="+"Hello,%0D%0A%0D%0A"+this.props.text+'%0D%0A%0D%0A'+this.props.agent+"%0D%0ASD SSC";
+    
+    var greeting =  this.props.language === undefined ? 'Bonjour ' : this.props.language ? 'Bonjour ' : 'Hello '
+    var signature = "Analyste de Soutien en TI | IT Support Analyst%0D%0ASupport Exécutif | Executive Support%0D%0AServices de Soutien des Technologies en Milieu de Travail | Workplace Technology Services Support%0D%0ARéseaux, Sécurité et Services Numériques |  Networks, Security and Digital Services%0D%0AServices partagés Canada | Shared Services Canada%0D%0A819-956-5200%0D%0A"
+    var str = this.props.to;
+    var name = str.split("@")[0].toUpperCase();
+    var firstname = name.split(".")[0];
+    location.href="mailto:"+this.props.to+"?subject="+this.props.subject+"&body="+greeting+firstname+",%0D%0A%0D%0A"+this.props.text+'%0D%0A%0D%0A'+this.props.agent+"%0D%0A"+signature;
+    
+    //location.href="mailto:benoit.bellefontaine@gmail.com";
     /*this.setState(
       state => ({ visible: !state.visible, immediate: true }),
       //() => this.state.onClick && this.state.onClick(this.state.visible)
@@ -144,9 +155,11 @@ export default class Tree extends React.Component {
           />
         )}
 
-        <span style={{verticalAlign:'middle',fontSize:'1em'}} >
+        <span style={{verticalAlign:'middle',fontSize:'1.2em'}} >
           {content}
-          <span style={{height:'15px',fontSize:'1em',lineHeight:'0.75em',border:'2px solid darkgray',borderRadius:'3px',margin:'2px',marginLeft:'5px',padding:1,cursor:'pointer',color:'red',backgroundColor:'white'}} onClick={this.add}><strong>rec</strong></span>
+          <span style={{width:'45px',height:'15px',fontSize:'1em',lineHeight:'0.75em',border:'2px solid darkgray',borderRadius:'3px',margin:'2px',marginLeft:'5px',padding:'2px 2px 1px 1px',cursor:'pointer',color:'firebrick',backgroundColor:'white'}} onClick={this.add}>
+            <Icons.Circle style={{ width:'1.3em',height:'1.3em',margin:'-2px 1px 0px -1px',cursor:'pointer',verticalAlign:'middle' }}/><strong>rec</strong>
+          </span>
         </span>
         
         <span style={{verticalAlign:'middle',fontSize:'1em'}} >

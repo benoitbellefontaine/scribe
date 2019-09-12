@@ -12,7 +12,9 @@ import {
   LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
-  SET_AGENT
+  SET_AGENT,
+  SET_EMAILADDRESS,
+  SET_LANGUAGE
 } from './constants'
 
 /**
@@ -96,4 +98,18 @@ export function clearError () {
  */
 export function getUser () {
   return {type: GET_USER}
+}
+
+/**
+ * set email address
+ */
+export function setEmailAddress (emailaddress) {
+  return {type: SET_EMAILADDRESS, emailaddress}
+}
+
+/**
+ * set language
+ */
+export function setLanguage (checked) {
+  return {type: SET_LANGUAGE, checked}
 }

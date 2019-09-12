@@ -2,7 +2,7 @@ import request from './fakeRequest';
 import axios from 'axios';
 
 const headers = {'Content-Type': 'application/json'};
-const burl = 'http://10.17.5.23:3001';
+const burl = 'http://10.36.101.133:3001';
 
 let localStorage;
 

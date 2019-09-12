@@ -12,14 +12,14 @@
     z-index: 10;
   }
   
-  .toggle {
+  /*.toggle {
     position: absolute;
     margin: 40px;
     color: #dfdfdf;
     z-index: 101;
     font-size: 2em;
     cursor: pointer;
-  }
+  }*/
 
   .login-form-button {
     width: 100%;

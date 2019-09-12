@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
                 
                 <Link style={{margin:'10px',flexGrow:1,textAlign:'center'}} to='/emailtemplates' className='btn btn--login btn--nav'>email templates</Link>
               
-                <Link style={{margin:'10px',flexGrow:1,textAlign:'center'}} to='/click' className='btn btn--login btn--nav'>svg tree</Link>
+                <Link style={{margin:'10px',flexGrow:1,textAlign:'center'}} to='/excel' className='btn btn--login btn--nav'>svg tree</Link>
               
                 <Link style={{margin:'10px',flexGrow:1,textAlign:'center'}} to='/tree2' className='btn btn--login btn--nav'>emoji tree</Link>
               

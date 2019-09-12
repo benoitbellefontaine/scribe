@@ -10,7 +10,9 @@ import {
   SET_AGENT,
   SENDING_REQUEST,
   REQUEST_ERROR,
-  CLEAR_ERROR
+  CLEAR_ERROR,
+  SET_EMAILADDRESS,
+  SET_LANGUAGE
 } from '../actions/constants'
 import auth from '../auth'
 
@@ -25,6 +27,8 @@ let initialState = {
   loggedIn: auth.loggedIn(),
   agent: '',
   user: '',
+  emailaddress: '',
+  checked: true,
   client : {
     name : "",
     email: "",
@@ -47,6 +51,12 @@ function reducer (state = initialState, action) {
       return {...state, formState: action.newFormState}
     case SET_AUTH:
       return {...state, loggedIn: action.newAuthState}
+    case SET_EMAILADDRESS:
+      console.log('email address',action.emailaddress)
+      return {...state, emailaddress: action.emailaddress}
+    case SET_LANGUAGE:
+      console.log('language',action.checked)
+      return {...state, language: action.checked}
     case SET_USER:
       return {...state, user: action.user}
     case SET_AGENT:
